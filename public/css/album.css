@@ -30,6 +30,7 @@
 footer {
   padding-top: 3rem;
   padding-bottom: 3rem;
+  bottom: 0;
 }
 
 footer p {
@@ -37,3 +38,17 @@ footer p {
 }
 
 .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+
+.add-btn {
+
+  margin: 1rem 0;
+
+}
+
+.upload h2 {
+
+  margin: 2rem 0;
+}
+
+

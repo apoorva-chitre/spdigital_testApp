@@ -12,7 +12,7 @@ class VideosController extends Controller
 
     public function index() {
 
-    	$videos = Video::all();
+    	$videos = Video::latest()->get();
 
     	return view('videos.index', compact('videos'));
     }
@@ -23,4 +23,31 @@ class VideosController extends Controller
     	return view('videos.show', compact('video'));
     }
     
+
+    public function create() {
+
+
+    	return view('videos.create');
+
+    }
+
+    public function store() {
+
+
+    	$this->validate(request(), [
+
+    		'title' => 'required'
+
+    	]);
+
+
+    	Video::create ( [
+
+    		'title' => request('video-title')
+
+    	]);
+
+    	return redirect('/');
+
+    }
 }

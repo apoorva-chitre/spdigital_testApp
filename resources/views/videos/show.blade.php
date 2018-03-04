@@ -3,8 +3,10 @@
 
 @section('content') 
 
-    
-    <h1>A place to show the posts</h1>
+	<div class="container">
+		
+		<h2>{{ $video->title }}</h2>
 
+	</div>
 
 @endsection
