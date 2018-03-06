@@ -11,8 +11,16 @@ use Illuminate\Support\Facades\Storage;
 use App\Video;
 
 
+
 class VideosController extends Controller
 {
+
+    public function __construct() {
+
+        $this->middleware('auth')->except(['index','show']);
+
+
+    }
 
     public function index() {
 
@@ -52,7 +60,8 @@ class VideosController extends Controller
             $vid_file = $request->file('video_file');
             $vid_name = time().$vid_file->getClientOriginalName();
 
-            $vid_file->move(public_path().'/videos', $vid_name);
+           $vid_file->move(public_path().'/videos', $vid_name); 
+   
        }
 
 
@@ -61,12 +70,15 @@ class VideosController extends Controller
             $thumb_img = $request->file('thumb_img');
             $thumb_img_name = time().$thumb_img->getClientOriginalName();
 
-            $thumb_img->move(public_path().'/thumbnails', $thumb_img_name);
+            $thumb_img->move(public_path().'/thumbnails', $thumb_img_name); 
+
        }
 
     	$video = new Video();
 
         $video->title = $request->get('video_title');
+
+        $video->user_id = auth()->id();
 
         $video->videoURL = $vid_name;
 

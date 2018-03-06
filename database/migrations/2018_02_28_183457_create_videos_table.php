@@ -18,6 +18,8 @@ class CreateVideosTable extends Migration
 
             $table->text('title');
 
+            $table->integer('user_id');
+
             $table->string('videoURL');
 
             $table->string('thumbURL');
